@@ -75,3 +75,10 @@ def print_pairs(strings:List((List(u24), u24))) -> IO(u24):
         return print_pairs(strings.tail)
       case List/Nil:
         return wrap(0)
+
+def chunk_from_stream(stream:Result(List(u24), e)) -> HashMap(u24, u24):
+  match stream:
+    case Result/Ok:
+      return build_svc(strip(String/decode_utf8(stream.val)))
+    case Result/Err:
+      return HashMap/new([])
