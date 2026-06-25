@@ -16,6 +16,12 @@ def rule_a(chunk:HashMap(u24, u24)) -> Maybe(String):
 
 ############### PRODUCTIONS
 # All productions should return a chunk
+# Template:
+#{
+def production_a(chunk:HashMap(u24, u24)) -> HashMap(u24, u24):
+  # Do something here
+  return chunk
+#}
 
 def event_loop(productions:HashMap(u24, (HashMap(u24, u24) -> HashMap(u24, u24))), rules:List((HashMap(u24, u24)) -> Maybe(String))) -> IO(u24):
   with IO:
