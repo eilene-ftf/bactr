@@ -23,7 +23,12 @@ def production_a(chunk:HashMap(u24, u24)) -> HashMap(u24, u24):
   return chunk
 #}
 
-def event_loop(productions:HashMap(u24, (HashMap(u24, u24) -> HashMap(u24, u24))), rules:List((HashMap(u24, u24)) -> Maybe(String))) -> IO(u24):
+def event_loop() -> IO(u24):
+  ###### DECLARE PRODUCTIONS HERE
+  pairs = [] # declare your productions (tuple of key-value pairs, where the value is a function)
+  rules = [] # declare your matching rules, just a list of functions
+  ###### END PRODUCTION DECLARATION
+  productions = HashMap/from_string_keys(pairs)
   with IO:
     # read chunk from file
     stream <- IO/FS/read_file("/tmp/api_outbox")
@@ -40,11 +45,9 @@ def event_loop(productions:HashMap(u24, (HashMap(u24, u24) -> HashMap(u24, u24))
     update = (production)(chunk)
     # write chunk to /tmp/api_inbox
     * <- IO/FS/write_file("/tmp/api_inbox", String/encode_utf8(encode_chunk(update)))
-    return event_loop(productions, rules)
+    return event_loop()
 
 def main() -> IO(u24):
-  productions = [] # declare your productions (tuple of key-value pairs, where the value is a function)
-  rules = [] # declare your matching rules, just a list of functions
   with IO:
-    * <- event_loop(HashMap/from_string_keys(productions), rules)
+    * <- event_loop()
     return wrap(0)
