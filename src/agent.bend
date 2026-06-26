@@ -65,5 +65,5 @@ def main() -> IO(u24):
   productions = [("WALK", default)] # declare your productions (tuple of key-value pairs, where the value is a function)
   rules = [when_to_go, when_to_stop] # declare your matching rules, just a list of functions
   with IO:
-    * <- event_loop(build_svc(productions), rules)
+    * <- event_loop(HashMap/from_string_keys(productions), rules)
     return wrap(0)

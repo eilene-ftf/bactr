@@ -1,5 +1,16 @@
 object HashMap(u24, U) { keys: List(List(u24)), map: Map(U) }
 
+def HashMap/from_string_keys(pairs:List((String, U))) -> HashMap(u24, U):
+  return HashMap/new(HashMap/from_string_keys.go(pairs))
+  
+def HashMap/from_string_keys.go(pairs:List((String, U))) -> List((List(u24), U)):
+  match pairs:
+    case List/Cons:
+      (key, value) = pairs.head
+      return List/Cons((String/encode_utf8(key), value), HashMap/from_string_keys.go(pairs.tail))
+    case List/Nil:
+      return []
+
 def HashMap/new(pairs: List((List(u24), U))) -> HashMap(u24, U):
   (k, m) = HashMap/build(pairs, [], {})
   return HashMap { keys: k, map: m}
