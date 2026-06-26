@@ -46,5 +46,5 @@ def main() -> IO(u24):
   productions = [] # declare your productions (tuple of key-value pairs, where the value is a function)
   rules = [] # declare your matching rules, just a list of functions
   with IO:
-    * <- event_loop(HashMap/new(productions), rules)
+    * <- event_loop(HashMap/from_string_keys(productions), rules)
     return wrap(0)
