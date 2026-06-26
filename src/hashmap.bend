@@ -32,6 +32,9 @@ def HashMap/get(key: List(u24), hashmap: HashMap(u24, U)) -> U:
   (new_hm, result) = HashMap/get_check(key, hashmap)
   return Maybe/unwrap(result)
 
+def HashMap/get_string(key: String, hashmap: HashMap(u24, U)) -> U:
+  return HashMap/get(String/encode_utf8(key), hashmap)
+
 def HashMap/hash_steps(l:List(u24), hash:u24, prime:u24) -> u24:
   match l:
     case List/Cons:
