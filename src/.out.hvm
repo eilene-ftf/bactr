@@ -1,0 +1,611 @@
+@HashMap = (a (b ((@HashMap/tag (a (b c))) c)))
+
+@HashMap/build = ((@HashMap/build__C2 a) a)
+
+@HashMap/build__C0 = (a (b (a b)))
+
+@HashMap/build__C1 = (* (({b f} h) (a (c (e j)))))
+  & @HashMap/build ~ (a (d (i j)))
+  & @List/Cons ~ (b (c d))
+  & @Map/set ~ (e (g (h i)))
+  & @HashMap/hash ~ (f g)
+
+@HashMap/build__C2 = (?((@HashMap/build__C0 @HashMap/build__C1) a) a)
+
+@HashMap/get = (a (b d))
+  & @Maybe/unwrap ~ (c d)
+  & @HashMap/get_check ~ (a (b (* c)))
+
+@HashMap/get_check = (a ((@HashMap/get_check__C1 (a b)) b))
+
+@HashMap/get_check__C0 = (d (a (b (f g))))
+  & @HashMap ~ (d (e f))
+  & @Map/get_check ~ (a (c (g e)))
+  & @HashMap/hash ~ (b c)
+
+@HashMap/get_check__C1 = (?((@HashMap/get_check__C0 *) a) a)
+
+@HashMap/hash = (a b)
+  & @HashMap/hash_steps ~ (a (1875397 (403 b)))
+
+@HashMap/hash_steps = ((@HashMap/hash_steps__C1 a) a)
+
+@HashMap/hash_steps__C0 = (* ($([^] $(b $([*] $(c d)))) (a (b ({c e} f)))))
+  & @HashMap/hash_steps ~ (a (d (e f)))
+
+@HashMap/hash_steps__C1 = (?(((a (* a)) @HashMap/hash_steps__C0) b) b)
+
+@HashMap/new = (a d)
+  & @HashMap ~ (b (c d))
+  & @HashMap/build ~ (a (@List/Nil (@Map/empty (b c))))
+
+@HashMap/tag = 0
+
+@IO/Call = (a (b (c (d ((@IO/Call/tag (a (b (c (d e))))) e)))))
+
+@IO/Call/tag = 1
+
+@IO/Done = (a (b ((@IO/Done/tag (a (b c))) c)))
+
+@IO/Done/tag = 0
+
+@IO/FS/STDOUT = 1
+
+@IO/FS/close = (f h)
+  & @IO/unwrap_inner ~ (g h)
+  & @IO/call ~ (e (f g))
+  & @String/Cons ~ (67 (d e))
+  & @String/Cons ~ (76 (c d))
+  & @String/Cons ~ (79 (b c))
+  & @String/Cons ~ (83 (a b))
+  & @String/Cons ~ (69 (@String/Nil a))
+
+@IO/FS/open = (e (f h))
+  & @IO/unwrap_inner ~ (g h)
+  & @IO/call ~ (d ((e f) g))
+  & @String/Cons ~ (79 (c d))
+  & @String/Cons ~ (80 (b c))
+  & @String/Cons ~ (69 (a b))
+  & @String/Cons ~ (78 (@String/Nil a))
+
+@IO/FS/read = (e (f h))
+  & @IO/unwrap_inner ~ (g h)
+  & @IO/call ~ (d ((e f) g))
+  & @String/Cons ~ (82 (c d))
+  & @String/Cons ~ (69 (b c))
+  & @String/Cons ~ (65 (a b))
+  & @String/Cons ~ (68 (@String/Nil a))
+
+@IO/FS/read_file = (a d)
+  & @IO/bind ~ (c (@IO/FS/read_file__C6 d))
+  & @IO/FS/open ~ (a (b c))
+  & @String/Cons ~ (114 (@String/Nil b))
+
+@IO/FS/read_file__C0 = ((c d) (b (a d)))
+  & @Result/and ~ (a (b c))
+
+@IO/FS/read_file__C1 = (a (c (d f)))
+  & @IO/bind ~ (b (((@IO/FS/read_file__C0 (c (d e))) e) f))
+  & @IO/FS/close ~ (a b)
+
+@IO/FS/read_file__C2 = ({a c} (d f))
+  & @IO/bind ~ (b (((@IO/FS/read_file__C1 (c (d e))) e) f))
+  & @IO/FS/read_to_end ~ (a b)
+
+@IO/FS/read_file__C3 = (* (a ((b c) c)))
+  & @Result/Err ~ (a b)
+
+@IO/FS/read_file__C4 = (?((@IO/FS/read_file__C2 @IO/FS/read_file__C3) a) a)
+
+@IO/FS/read_file__C5 = (a ((@IO/FS/read_file__C4 (a b)) b))
+
+@IO/FS/read_file__C6 = ((@IO/FS/read_file__C5 (@IO/wrap a)) a)
+
+@IO/FS/read_to_end = (a b)
+  & @IO/FS/read_to_end.read_chunks ~ (a (@List/Nil b))
+
+@IO/FS/read_to_end.read_chunks = ({a d} (c f))
+  & @IO/bind ~ (b (((@IO/FS/read_to_end.read_chunks__C6 (@IO/wrap (c (d e)))) e) f))
+  & @IO/FS/read ~ (a (1048576 b))
+
+@IO/FS/read_to_end.read_chunks__C0 = ((c d) (a (* d)))
+  & @Result/Ok ~ (b c)
+  & @List/flatten ~ (a b)
+
+@IO/FS/read_to_end.read_chunks__C1 = (* (b (c (* (e (a g))))))
+  & @IO/FS/read_to_end.read_chunks ~ (a (f g))
+  & @List/Cons ~ (d (e f))
+  & @List/Cons ~ (b (c d))
+
+@IO/FS/read_to_end.read_chunks__C2 = (?((@IO/FS/read_to_end.read_chunks__C0 @IO/FS/read_to_end.read_chunks__C1) a) a)
+
+@IO/FS/read_to_end.read_chunks__C3 = ((@IO/FS/read_to_end.read_chunks__C2 a) a)
+
+@IO/FS/read_to_end.read_chunks__C4 = (* (a ((b c) (* (* c)))))
+  & @Result/Err ~ (a b)
+
+@IO/FS/read_to_end.read_chunks__C5 = (?((@IO/FS/read_to_end.read_chunks__C3 @IO/FS/read_to_end.read_chunks__C4) a) a)
+
+@IO/FS/read_to_end.read_chunks__C6 = (a (b (c ((@IO/FS/read_to_end.read_chunks__C5 (a (b (c d)))) d))))
+
+@IO/FS/write = (f (g i))
+  & @IO/unwrap_inner ~ (h i)
+  & @IO/call ~ (e ((f g) h))
+  & @String/Cons ~ (87 (d e))
+  & @String/Cons ~ (82 (c d))
+  & @String/Cons ~ (73 (b c))
+  & @String/Cons ~ (84 (a b))
+  & @String/Cons ~ (69 (@String/Nil a))
+
+@IO/FS/write_file = (a (d f))
+  & @IO/bind ~ (c (((@IO/FS/write_file__C5 (d (@IO/wrap e))) e) f))
+  & @IO/FS/open ~ (a (b c))
+  & @String/Cons ~ (119 (@String/Nil b))
+
+@IO/FS/write_file__C0 = ((c d) (b (a d)))
+  & @Result/and ~ (a (b c))
+
+@IO/FS/write_file__C1 = (a (c (d f)))
+  & @IO/bind ~ (b (((@IO/FS/write_file__C0 (c (d e))) e) f))
+  & @IO/FS/close ~ (a b)
+
+@IO/FS/write_file__C2 = ({a d} (b (e g)))
+  & @IO/bind ~ (c (((@IO/FS/write_file__C1 (d (e f))) f) g))
+  & @IO/FS/write ~ (a (b c))
+
+@IO/FS/write_file__C3 = (* (a (* ((b c) c))))
+  & @Result/Err ~ (a b)
+
+@IO/FS/write_file__C4 = (?((@IO/FS/write_file__C2 @IO/FS/write_file__C3) a) a)
+
+@IO/FS/write_file__C5 = (a (b ((@IO/FS/write_file__C4 (a (b c))) c)))
+
+@IO/MAGIC = (13683217 16719857)
+
+@IO/bind = ((@IO/bind__C2 a) a)
+
+@IO/bind__C0 = (* (b (a c)))
+  & @undefer ~ (a (b c))
+
+@IO/bind__C1 = (* (a (b (c ((d e) (f h))))))
+  & @IO/Call ~ (a (b (c ((d g) h))))
+  & @IO/bind ~ (e (f g))
+
+@IO/bind__C2 = (?((@IO/bind__C0 @IO/bind__C1) a) a)
+
+@IO/call = (a (b c))
+  & @IO/Call ~ (@IO/MAGIC (a (b (@IO/call__C0 c))))
+
+@IO/call__C0 = a
+  & @IO/Done ~ (@IO/MAGIC a)
+
+@IO/print = (a d)
+  & @IO/bind ~ (c (@IO/print__C1 d))
+  & @IO/FS/write ~ (@IO/FS/STDOUT (b c))
+  & @String/encode_utf8 ~ (a b)
+
+@IO/print__C0 = ((b c) (a c))
+  & @Result/unwrap ~ (a b)
+
+@IO/print__C1 = ((@IO/print__C0 (@IO/wrap a)) a)
+
+@IO/unwrap_inner = (a b)
+  & @IO/bind ~ (a (@IO/unwrap_inner__C4 b))
+
+@IO/unwrap_inner__C0 = (a ((b c) c))
+  & @Result/Ok ~ (a b)
+
+@IO/unwrap_inner__C1 = (* (a ((c d) d)))
+  & @Result/Err ~ (b c)
+  & @IOError/unwrap_inner ~ (a b)
+
+@IO/unwrap_inner__C2 = (?((@IO/unwrap_inner__C0 @IO/unwrap_inner__C1) a) a)
+
+@IO/unwrap_inner__C3 = (a ((@IO/unwrap_inner__C2 (a b)) b))
+
+@IO/unwrap_inner__C4 = ((@IO/unwrap_inner__C3 (@IO/wrap a)) a)
+
+@IO/wrap = a
+  & @IO/Done ~ (@IO/MAGIC a)
+
+@IOError/unwrap_inner = ((@IOError/unwrap_inner__C1 a) a)
+
+@IOError/unwrap_inner__C0 = (?((@unreachable (* (a a))) b) b)
+
+@IOError/unwrap_inner__C1 = (?((@unreachable @IOError/unwrap_inner__C0) a) a)
+
+@List/Cons = (a (b ((@List/Cons/tag (a (b c))) c)))
+
+@List/Cons/tag = 1
+
+@List/Nil = ((@List/Nil/tag a) a)
+
+@List/Nil/tag = 0
+
+@List/concat = ((@List/concat__C1 a) a)
+
+@List/concat__C0 = (* (a (b (c e))))
+  & @List/Cons ~ (a (d e))
+  & @List/concat ~ (b (c d))
+
+@List/concat__C1 = (?(((a a) @List/concat__C0) b) b)
+
+@List/flatten = ((@List/flatten__C1 a) a)
+
+@List/flatten__C0 = (* (a (b d)))
+  & @List/concat ~ (a (c d))
+  & @List/flatten ~ (b c)
+
+@List/flatten__C1 = (?((@List/Nil @List/flatten__C0) a) a)
+
+@Map/Leaf = ((@Map/Leaf/tag a) a)
+
+@Map/Leaf/tag = 1
+
+@Map/Node = (a (b (c ((@Map/Node/tag (a (b (c d)))) d))))
+
+@Map/Node/tag = 0
+
+@Map/empty = @Map/Leaf
+
+@Map/get_check = ((@Map/get_check__C5 a) a)
+
+@Map/get_check__C0 = ($([:/0x0000002] b) (d (e (a (c g)))))
+  & @Map/get_check ~ (a (b (c f)))
+  & @Map/Node ~ (d (e (f g)))
+
+@Map/get_check__C1 = (* ($([:/0x0000002] b) (d (a (f (c g))))))
+  & @Map/get_check ~ (a (b (c e)))
+  & @Map/Node ~ (d (e (f g)))
+
+@Map/get_check__C2 = ({$([:%0x0000002] $([=0x0000000] ?((@Map/get_check__C0 @Map/get_check__C1) (a b)))) a} b)
+
+@Map/get_check__C3 = (* (* ({a b} (c (d (a e))))))
+  & @Map/Node ~ (b (c (d e)))
+
+@Map/get_check__C4 = (c (d (e ({a b} f))))
+  & $(a ?((@Map/get_check__C2 @Map/get_check__C3) (b (c (d (e f)))))) ~ [=0x0000000]
+
+@Map/get_check__C5 = (?((@Map/get_check__C4 (* (* (@Maybe/None @Map/Leaf)))) a) a)
+
+@Map/set = ((@Map/set__C10 a) a)
+
+@Map/set__C0 = ($([:/0x0000002] d) (e (a (b (c g)))))
+  & @Map/Node ~ (a (b (f g)))
+  & @Map/set ~ (c (d (e f)))
+
+@Map/set__C1 = (* ($([:/0x0000002] c) (d (a (b f)))))
+  & @Map/Node ~ (a (e f))
+  & @Map/set ~ (b (c (d e)))
+
+@Map/set__C10 = (?((@Map/set__C8 @Map/set__C9) a) a)
+
+@Map/set__C2 = ({$([:%0x0000002] $([=0x0000000] ?((@Map/set__C0 @Map/set__C1) (a b)))) a} b)
+
+@Map/set__C3 = (* (* (a (* c))))
+  & @Map/Node ~ (b c)
+  & @Maybe/Some ~ (a b)
+
+@Map/set__C4 = ($([:/0x0000002] a) (b d))
+  & @Map/Node ~ (@Maybe/None (@Map/Leaf (c d)))
+  & @Map/set ~ (@Map/Leaf (a (b c)))
+
+@Map/set__C5 = (* ($([:/0x0000002] a) (b d)))
+  & @Map/Node ~ (@Maybe/None (c (@Map/Leaf d)))
+  & @Map/set ~ (@Map/Leaf (a (b c)))
+
+@Map/set__C6 = ({$([:%0x0000002] $([=0x0000000] ?((@Map/set__C4 @Map/set__C5) (a b)))) a} b)
+
+@Map/set__C7 = (* (* (a c)))
+  & @Map/Node ~ (b (@Map/Leaf (@Map/Leaf c)))
+  & @Maybe/Some ~ (a b)
+
+@Map/set__C8 = (d (e (f ({a b} (c g)))))
+  & $(a ?((@Map/set__C2 @Map/set__C3) (b (c (d (e (f g))))))) ~ [=0x0000000]
+
+@Map/set__C9 = (* ({a b} c))
+  & $(a ?((@Map/set__C6 @Map/set__C7) (b c))) ~ [=0x0000000]
+
+@Maybe/None = ((@Maybe/None/tag a) a)
+
+@Maybe/None/tag = 1
+
+@Maybe/Some = (a ((@Maybe/Some/tag (a b)) b))
+
+@Maybe/Some/tag = 0
+
+@Maybe/unwrap = ((@Maybe/unwrap__C0 a) a)
+
+@Maybe/unwrap__C0 = (?(((a a) (* @unreachable)) b) b)
+
+@Result/Err = (a ((@Result/Err/tag (a b)) b))
+
+@Result/Err/tag = 1
+
+@Result/Ok = (a ((@Result/Ok/tag (a b)) b))
+
+@Result/Ok/tag = 0
+
+@Result/and = ((@Result/and__C1 a) a)
+
+@Result/and__C0 = (* (a (* b)))
+  & @Result/Err ~ (a b)
+
+@Result/and__C1 = (?(((* (a a)) @Result/and__C0) b) b)
+
+@Result/unwrap = ((@Result/unwrap__C0 a) a)
+
+@Result/unwrap__C0 = (?(((a a) (* (b b))) c) c)
+
+@String/Cons = (a (b ((@String/Cons/tag (a (b c))) c)))
+
+@String/Cons/tag = 1
+
+@String/Nil = ((@String/Nil/tag a) a)
+
+@String/Nil/tag = 0
+
+@String/decode_utf8 = ((@String/decode_utf8__C4 a) a)
+
+@String/decode_utf8__C0 = (a b)
+  & @String/Cons ~ (a (@String/Nil b))
+
+@String/decode_utf8__C1 = (* (b (c (a f))))
+  & @String/Cons ~ (a (e f))
+  & @String/decode_utf8 ~ (d e)
+  & @List/Cons ~ (b (c d))
+
+@String/decode_utf8__C2 = (?((@String/decode_utf8__C0 @String/decode_utf8__C1) a) a)
+
+@String/decode_utf8__C3 = (* (a (b e)))
+  & @Utf8/decode_character ~ (c (d (@String/decode_utf8__C2 (d e))))
+  & @List/Cons ~ (a (b c))
+
+@String/decode_utf8__C4 = (?((@String/Nil @String/decode_utf8__C3) a) a)
+
+@String/encode_utf8 = ((@String/encode_utf8__C7 a) a)
+
+@String/encode_utf8__C0 = ({$([&0x000003F] g) {$([:>>0x0000006] $([&0x000003F] e)) {$([:>>0x000000C] $([&0x000003F] c)) $([:>>0x0000012] a)}}} (i n))
+  & @List/Cons ~ (b (m n))
+  & $(a b) ~ [|0x00000F0]
+  & @List/Cons ~ (d (l m))
+  & $(c d) ~ [|0x0000080]
+  & @List/Cons ~ (f (k l))
+  & $(e f) ~ [|0x0000080]
+  & @List/Cons ~ (h (j k))
+  & $(g h) ~ [|0x0000080]
+  & @String/encode_utf8 ~ (i j)
+
+@String/encode_utf8__C1 = (* ({$([&0x000003F] e) {$([:>>0x0000006] $([&0x000003F] c)) $([:>>0x000000C] a)}} (g k)))
+  & @List/Cons ~ (b (j k))
+  & $(a b) ~ [|0x00000E0]
+  & @List/Cons ~ (d (i j))
+  & $(c d) ~ [|0x0000080]
+  & @List/Cons ~ (f (h i))
+  & $(e f) ~ [|0x0000080]
+  & @String/encode_utf8 ~ (g h)
+
+@String/encode_utf8__C2 = ({$([<0x000FFFF] a) b} c)
+  & $(a ?((@String/encode_utf8__C0 @String/encode_utf8__C1) (b c))) ~ [=0x0000000]
+
+@String/encode_utf8__C3 = (* ({$([&0x000003F] c) $([:>>0x0000006] a)} (e h)))
+  & @List/Cons ~ (b (g h))
+  & $(a b) ~ [|0x00000C0]
+  & @List/Cons ~ (d (f g))
+  & $(c d) ~ [|0x0000080]
+  & @String/encode_utf8 ~ (e f)
+
+@String/encode_utf8__C4 = ({$([<0x00007FF] a) b} c)
+  & $(a ?((@String/encode_utf8__C2 @String/encode_utf8__C3) (b c))) ~ [=0x0000000]
+
+@String/encode_utf8__C5 = (* (a (b d)))
+  & @List/Cons ~ (a (c d))
+  & @String/encode_utf8 ~ (b c)
+
+@String/encode_utf8__C6 = (* ({$([<0x000007F] a) b} c))
+  & $(a ?((@String/encode_utf8__C4 @String/encode_utf8__C5) (b c))) ~ [=0x0000000]
+
+@String/encode_utf8__C7 = (?((@List/Nil @String/encode_utf8__C6) a) a)
+
+@Utf8/REPLACEMENT_CHARACTER = 65533
+
+@Utf8/decode_character = ((@Utf8/decode_character__C30 a) a)
+
+@Utf8/decode_character__C0 = (* (@Utf8/REPLACEMENT_CHARACTER @List/Nil))
+
+@Utf8/decode_character__C1 = (* (a (a @List/Nil)))
+
+@Utf8/decode_character__C10 = ({$([&0x00000E0] $([=0x00000C0] ?((@Utf8/decode_character__C8 @Utf8/decode_character__C9) (a b)))) a} b)
+
+@Utf8/decode_character__C11 = (* (a (b (c (a e)))))
+  & @List/Cons ~ (b (d e))
+  & @List/Cons ~ (c (@List/Nil d))
+
+@Utf8/decode_character__C12 = (* (a (* (* (* (@Utf8/REPLACEMENT_CHARACTER a))))))
+
+@Utf8/decode_character__C13 = (* ($([&0x000003F] a) (e ($([&0x0000007] $([:<<0x0000012] $([|] $(c d)))) ($([&0x000003F] $([:<<0x000000C] $([|] $(b c)))) ($([&0x000003F] $([:<<0x0000006] $([|] $(a b)))) (d e)))))))
+
+@Utf8/decode_character__C14 = (a (b ({$([&0x00000F8] $([=0x00000F0] ?((@Utf8/decode_character__C12 @Utf8/decode_character__C13) (a (b (c d)))))) c} d)))
+
+@Utf8/decode_character__C15 = (* (d (e ($([&0x000000F] $([:<<0x000000C] $([|] $(b c)))) ($([&0x000003F] $([:<<0x0000006] $([|] $(a b)))) ($([&0x000003F] a) (c f)))))))
+  & @List/Cons ~ (d (e f))
+
+@Utf8/decode_character__C16 = (a (b ({$([&0x00000F0] $([=0x00000E0] ?((@Utf8/decode_character__C14 @Utf8/decode_character__C15) (a (b (c d)))))) c} d)))
+
+@Utf8/decode_character__C17 = (* (d (e ($([&0x000001F] $([:<<0x0000006] $([|] $(a b)))) ($([&0x000003F] a) (c (b g)))))))
+  & @List/Cons ~ (c (f g))
+  & @List/Cons ~ (d (e f))
+
+@Utf8/decode_character__C18 = (a (b ({$([&0x00000E0] $([=0x00000C0] ?((@Utf8/decode_character__C16 @Utf8/decode_character__C17) (a (b (c d)))))) c} d)))
+
+@Utf8/decode_character__C19 = (* (d (e (a (b (c (a h)))))))
+  & @List/Cons ~ (b (g h))
+  & @List/Cons ~ (c (f g))
+  & @List/Cons ~ (d (e f))
+
+@Utf8/decode_character__C2 = (* (* (@Utf8/REPLACEMENT_CHARACTER @List/Nil)))
+
+@Utf8/decode_character__C20 = ({$([<0x000007F] a) b} c)
+  & $(a ?((@Utf8/decode_character__C10 @Utf8/decode_character__C11) (b c))) ~ [=0x0000000]
+
+@Utf8/decode_character__C21 = (* (b (c ({$([<0x000007F] a) d} e))))
+  & $(a ?((@Utf8/decode_character__C18 @Utf8/decode_character__C19) (b (c (d e))))) ~ [=0x0000000]
+
+@Utf8/decode_character__C22 = (?((@Utf8/decode_character__C20 @Utf8/decode_character__C21) a) a)
+
+@Utf8/decode_character__C23 = ({$([<0x000007F] a) b} c)
+  & $(a ?((@Utf8/decode_character__C4 @Utf8/decode_character__C5) (b c))) ~ [=0x0000000]
+
+@Utf8/decode_character__C24 = (* (c ((@Utf8/decode_character__C22 (a (b (c d)))) (a (b d)))))
+
+@Utf8/decode_character__C25 = (?((@Utf8/decode_character__C23 @Utf8/decode_character__C24) a) a)
+
+@Utf8/decode_character__C26 = ({$([<0x000007F] a) b} c)
+  & $(a ?((@Utf8/decode_character__C0 @Utf8/decode_character__C1) (b c))) ~ [=0x0000000]
+
+@Utf8/decode_character__C27 = (* (b ((@Utf8/decode_character__C25 (a (b c))) (a c))))
+
+@Utf8/decode_character__C28 = (?((@Utf8/decode_character__C26 @Utf8/decode_character__C27) a) a)
+
+@Utf8/decode_character__C29 = (* (a ((@Utf8/decode_character__C28 (a b)) b)))
+
+@Utf8/decode_character__C3 = (* ($([&0x000001F] $([:<<0x0000006] $([|] $(a b)))) ($([&0x000003F] a) (b @List/Nil))))
+
+@Utf8/decode_character__C30 = (?(((0 @List/Nil) @Utf8/decode_character__C29) a) a)
+
+@Utf8/decode_character__C4 = ({$([&0x00000E0] $([=0x00000C0] ?((@Utf8/decode_character__C2 @Utf8/decode_character__C3) (a b)))) a} b)
+
+@Utf8/decode_character__C5 = (* (a (b (a c))))
+  & @List/Cons ~ (b (@List/Nil c))
+
+@Utf8/decode_character__C6 = (* (* (* (@Utf8/REPLACEMENT_CHARACTER @List/Nil))))
+
+@Utf8/decode_character__C7 = (* ($([&0x000000F] $([:<<0x000000C] $([|] $(b c)))) ($([&0x000003F] $([:<<0x0000006] $([|] $(a b)))) ($([&0x000003F] a) (c @List/Nil)))))
+
+@Utf8/decode_character__C8 = ({$([&0x00000F0] $([=0x00000E0] ?((@Utf8/decode_character__C6 @Utf8/decode_character__C7) (a b)))) a} b)
+
+@Utf8/decode_character__C9 = (* ($([&0x000001F] $([:<<0x0000006] $([|] $(a b)))) ($([&0x000003F] a) (c (b d)))))
+  & @List/Cons ~ (c (@List/Nil d))
+
+@address = h
+  & @String/Cons ~ (116 (g h))
+  & @String/Cons ~ (101 (f g))
+  & @String/Cons ~ (115 (e f))
+  & @String/Cons ~ (116 (d e))
+  & @String/Cons ~ (46 (c d))
+  & @String/Cons ~ (116 (b c))
+  & @String/Cons ~ (120 (a b))
+  & @String/Cons ~ (116 (@String/Nil a))
+
+@f24/to_u24 = ($([u24] ret) ret)
+
+@float = 0.5
+
+@loop = a
+  & @IO/bind ~ (@loop__C11 (@loop__C10 a))
+
+@loop__C0 = ((0 a) (* a))
+
+@loop__C1 = (a (e (* g)))
+  & @IO/bind ~ (d (((@loop__C0 (e f)) f) g))
+  & @IO/print ~ (c d)
+  & @u24/to_string ~ (b c)
+  & @f24/to_u24 ~ (a b)
+
+@loop__C10 = ((@loop__C9 (@IO/wrap a)) a)
+
+@loop__C11 = c
+  & @IO/FS/open ~ (@address (b c))
+  & @String/Cons ~ (114 (a b))
+  & @String/Cons ~ (43 (@String/Nil a))
+
+@loop__C2 = (a (d (e (* g))))
+  & @IO/bind ~ (c (((@loop__C1 (d (e f))) f) g))
+  & @IO/FS/close ~ (b c)
+  & @Result/unwrap ~ (a b)
+
+@loop__C3 = a
+  & @IO/FS/write_file ~ (@address (@float a))
+
+@loop__C4 = (a (b (c (* e))))
+  & @IO/bind ~ (@loop__C3 (((@loop__C2 (a (b (c d)))) d) e))
+
+@loop__C5 = b
+  & @IO/print ~ (a b)
+  & @String/Cons ~ (10 (@String/Nil a))
+
+@loop__C6 = (a (b (c (* e))))
+  & @IO/bind ~ (@loop__C5 (((@loop__C4 (a (b (c d)))) d) e))
+
+@loop__C7 = (d (f ({a e} h)))
+  & @IO/bind ~ (c (((@loop__C6 (d (e (f g)))) g) h))
+  & @IO/print ~ (b c)
+  & @String/decode_utf8 ~ (a b)
+
+@loop__C8 = a
+  & @IO/FS/read_file ~ (@address a)
+
+@loop__C9 = (b (a d))
+  & @IO/bind ~ (@loop__C8 (((@loop__C7 (a (b c))) c) d))
+
+@main = mc
+  & @IO/bind ~ (v ((((ic (hc kc)) (@IO/wrap lc)) lc) mc))
+  & @HashMap/new ~ (s *)
+  & @HashMap/new ~ (j *)
+  & @List/Cons ~ ((a 1) (i j))
+  & @String/Cons ~ (97 (@String/Nil a))
+  & @List/Cons ~ ((b 2) (h i))
+  & @String/Cons ~ (98 (@String/Nil b))
+  & @List/Cons ~ ((c 3) (g h))
+  & @String/Cons ~ (99 (@String/Nil c))
+  & @List/Cons ~ ((d 4) (f g))
+  & @String/Cons ~ (100 (@String/Nil d))
+  & @List/Cons ~ ((e 5) (@List/Nil f))
+  & @String/Cons ~ (101 (@String/Nil e))
+  & @List/Cons ~ ((l 10) (r s))
+  & @List/Cons ~ (1 (k l))
+  & @List/Cons ~ (1 (@List/Nil k))
+  & @List/Cons ~ ((n 20) (q r))
+  & @List/Cons ~ (1 (m n))
+  & @List/Cons ~ (2 (@List/Nil m))
+  & @List/Cons ~ ((p 30) (@List/Nil q))
+  & @List/Cons ~ (1 (o p))
+  & @List/Cons ~ (3 (@List/Nil o))
+  & @IO/FS/open ~ (@address (u v))
+  & @String/Cons ~ (114 (t u))
+  & @String/Cons ~ (43 (@String/Nil t))
+  & @IO/bind ~ (w ((((cc (ec ({x dc} gc))) (hc (ic jc))) jc) kc))
+  & @IO/FS/read_file ~ (@address w)
+  & @IO/bind ~ (z ((((xb (yb (zb (* bc)))) (cc (dc (ec fc)))) fc) gc))
+  & @IO/print ~ (y z)
+  & @String/decode_utf8 ~ (x y)
+  & @IO/bind ~ (bb ((((sb (tb (ub (* wb)))) (xb (yb (zb ac)))) ac) bc))
+  & @IO/print ~ (ab bb)
+  & @String/Cons ~ (10 (@String/Nil ab))
+  & @IO/bind ~ (cb ((((db (ob (pb (* rb)))) (sb (tb (ub vb)))) vb) wb))
+  & @IO/FS/write_file ~ (@address (@float cb))
+  & @IO/bind ~ (fb ((((gb (lb (* nb))) (ob (pb qb))) qb) rb))
+  & @IO/FS/close ~ (eb fb)
+  & @Result/unwrap ~ (db eb)
+  & @IO/bind ~ (jb (((((0 kb) (* kb)) (lb mb)) mb) nb))
+  & @IO/print ~ (ib jb)
+  & @u24/to_string ~ (hb ib)
+  & @f24/to_u24 ~ (gb hb)
+
+@u24/to_string = (a b)
+  & @u24/to_string__local_0_go ~ (a (@String/Nil b))
+
+@u24/to_string__local_0_go = ({$([:/0x000000A] {$([=0x0000000] ?((@u24/to_string__local_0_go__C0 @u24/to_string__local_0_go__C1) (a (c d)))) a}) $([:%0x000000A] b)} d)
+  & $(b c) ~ [+0x0000030]
+
+@u24/to_string__local_0_go__C0 = (a (b (c e)))
+  & @u24/to_string__local_0_go ~ (a (d e))
+  & @String/Cons ~ (b (c d))
+
+@u24/to_string__local_0_go__C1 = (* (* a))
+  & @String/Cons ~ a
+
+@undefer = (((a a) b) b)
+
+@unreachable = *
+
