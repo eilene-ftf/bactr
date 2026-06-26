@@ -53,7 +53,7 @@ def select.go(results:List(Maybe(String)), len:u24, i:u24) -> Maybe(String):
 
 def IO/random_u24() -> IO(Result(u24, u24)):
   with IO:
-    res_fd <- IO/FS/open("/dev/random", "r")
+    res_fd <- IO/FS/open("/dev/urandom", "r")
     match res_fd:
       case Result/Ok:
         fd = res_fd.val
