@@ -17,14 +17,14 @@ def rule_a(chunk:HashMap(u24, u24)) -> Maybe(String):
 
 # matching rules should return Maybe/Some with a key when they match, and otherwise Maybe/None
 def when_to_go(hm:HashMap(u24, u24)) -> Maybe(String):
-  if HashMap/get("example_slot", hm) > 10:
+  if HashMap/get_string("example_slot", hm) > 10:
     return Maybe/Some("WALK")
   else:
     return Maybe/None
 
 # These are defined as to be exhaustive and mutually exclusive, it's a little cumbersome but it makes the production logic cleanerdef when_to_stop(hm:HashMap(u24, u24)) -> Maybe(String)):
 def when_to_stop(hm:HashMap(u24, u24)) -> Maybe(String):
-  if HashMap/get("example_slot", hm) <= 10:
+  if HashMap/get_string("example_slot", hm) <= 10:
     return Maybe/Some("STOP")
   else:
     return Maybe/None
@@ -40,7 +40,7 @@ def production_a(chunk:HashMap(u24, u24)) -> HashMap(u24, u24):
 
 def default(hm:HashMap(u24, u24)) -> HashMap(u24, u24):
   open HashMap: hm
-  return build_svc([("step_len", 3),("lateral", 0),("yaw", 0),("velocity", 10),("go_stop", 1)])
+  return HashMap/from_string_keys([("step_len", 3),("lateral", 0),("yaw", 0),("velocity", 10),("go_stop", 1)])
 
 def event_loop(productions:HashMap(u24, (HashMap(u24, u24) -> HashMap(u24, u24))), rules:List((HashMap(u24, u24)) -> Maybe(String))) -> IO(u24):
   with IO:
