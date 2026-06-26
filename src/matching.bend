@@ -29,7 +29,7 @@ def consolidate.go(res: (List(Maybe(String)), u24, List(Maybe(String)))) -> (Lis
           return consolidate.go((results.tail, len, acc))
         case Maybe/Some:
           return consolidate.go((results.tail, len + 1, List/Cons(results.head, acc)))
-
+#{
 def select(results:List(Maybe(String)), len:u24) -> IO(Maybe(String)):
   with IO:
     rand <- IO/random_u24()
@@ -48,6 +48,27 @@ def select.go(results:List(Maybe(String)), len:u24, i:u24) -> Maybe(String):
         return results.head
       else:
         return select.go(results.tail, (len - 1), i)
+    case List/Nil:
+      return Maybe/None
+#}
+
+def select(results:List(Maybe(String)), len:u24) -> IO(Maybe(String)):
+  with IO:
+    rand <- IO/random_u24()
+    match rand:
+      case Result/Ok:
+        i = rand.val % len
+        return wrap(select.go(results, i))
+      case Result/Err:
+        return wrap(select.go(results, 0))
+
+def select.go(results:List(Maybe(String)), i:u24) -> Maybe(String):
+  match results:
+    case List/Cons:
+      if i == 0:
+        return results.head
+      else:
+        return select.go(results.tail, i - 1)
     case List/Nil:
       return Maybe/None
 

@@ -64,11 +64,32 @@ def production_a(chunk:HashMap(u24, u24)) -> HashMap(u24, u24):
 #
 
 def default(hm:HashMap(u24, u24)) -> HashMap(u24, u24):
-  open HashMap: hm
-  return HashMap/from_string_keys([("step_len", 3),("lateral", 0),("yaw", 0),("velocity", 10),("go_stop", 1)])
+  chunk = [
+    ("go", 1),
+    ("step_length",       50),
+    ("lateral_fraction",  0),
+    ("yaw_rate",          0),
+    ("step_velocity",     1),
+    ("clearance_height",  45),
+    ("penetration_depth", 3),
+  ]
+  return HashMap/from_string_keys(chunk)
+
+def stop(hm:HashMap(u24, u24)) -> HashMap(u24, u24):
+  chunk = [
+    ("go", 0),
+    ("step_length",       0),
+    ("lateral_fraction",  0),
+    ("yaw_rate",          0),
+    ("step_velocity",     1),
+    ("clearance_height",  0),
+    ("penetration_depth", 0),
+    ("swing_period",      0),
+  ]
+  return HashMap/from_string_keys(chunk)
 
 def event_loop() -> IO(u24):
-  pairs = [("WALK", default)] # declare your productions (tuple of key-value pairs, where the value is a function)
+  pairs = [("WALK", default), ("STOP", stop)] # declare your productions (tuple of key-value pairs, where the value is a function)
   rules = [when_to_go, when_to_stop] # declare your matching rules, just a list of functions
   productions = HashMap/from_string_keys(pairs) # generates productions
 

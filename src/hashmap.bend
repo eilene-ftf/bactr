@@ -30,7 +30,11 @@ def HashMap/get_check(key: List(u24), hashmap: HashMap(u24, U)) -> (HashMap(u24,
 
 def HashMap/get(key: List(u24), hashmap: HashMap(u24, U)) -> U:
   (new_hm, result) = HashMap/get_check(key, hashmap)
-  return Maybe/unwrap(result)
+  match result:
+    case Maybe/Some:
+      return result.value
+    case None:
+      return unreachable()
 
 def HashMap/get_string(key: String, hashmap: HashMap(u24, U)) -> U:
   return HashMap/get(String/encode_utf8(key), hashmap)
